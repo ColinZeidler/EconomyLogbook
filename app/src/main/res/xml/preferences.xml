@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/settings_units_category">
+
+        <ListPreference
+            android:key="pref_distunit"
+            android:title="@string/settings_dist"
+            android:dialogTitle="@string/settings_dist"
+            android:entries="@array/dist_unit_lables"
+            android:entryValues="@array/dist_unit_ratios"
+            android:defaultValue="@string/default_dist_unit" />
+
+        <ListPreference
+            android:key="pref_fuel_unit"
+            android:title="@string/settings_fuel"
+            android:dialogTitle="@string/settings_fuel"
+            android:entries="@array/fuel_unit_labels"
+            android:entryValues="@array/fuel_unit_ratios"
+            android:defaultValue="@string/default_fuel_unit" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

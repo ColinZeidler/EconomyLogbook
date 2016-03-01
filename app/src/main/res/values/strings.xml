@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">Economy Logboook</string>
     <string name="action_settings">Settings</string>
+
+    <!-- display activity-->
+    <string name="dist_total_title">Total Distance:</string>
+    <string name="fuel_total_title">Total Fuel Used:</string>
+
+    <!-- Array adapter-->
+    <string name="adapter_dist_title">Distance:</string>
+    <string name="adapter_fuel_title">Fuel:</string>
+    <string name="adapter_date_title">Date:</string>
+    <string name="dist_placeholder">1200km</string>
+    <string name="fuel_placeholder">400L</string>
+    <string name="date_placeholder">Feb 29, 2015</string>
+
+    <!-- Settings-->
+    <string name="default_dist_unit">1</string>
+    <string name="settings_dist">Distance</string>
+    <string name="settings_fuel">Fuel</string>
+    <string name="default_fuel_unit">1</string>
+    <string name="settings_units_category">Units</string>
 </resources>

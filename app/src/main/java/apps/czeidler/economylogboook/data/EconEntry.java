@@ -26,7 +26,7 @@ public class EconEntry {
         return entryDate.getTime();
     }
 
-    String GetDateString() {
+    public String getDateString() {
         DateFormat format = DateFormat.getDateInstance();
         return format.format(entryDate);
     }

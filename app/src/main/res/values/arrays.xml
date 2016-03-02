@@ -6,8 +6,8 @@
     </string-array>
 
     <string-array name="dist_unit_ratios">
-        <item>10</item>
-        <item>16</item>
+        <item>KILOMETERS</item>
+        <item>MILES</item>
     </string-array>
 
     <string-array name="fuel_unit_labels">
@@ -16,7 +16,7 @@
     </string-array>
 
     <string-array name="fuel_unit_ratios">
-        <item>10</item>
-        <item>38</item>
+        <item>LITERS</item>
+        <item>GALLONS</item>
     </string-array>
 </resources>

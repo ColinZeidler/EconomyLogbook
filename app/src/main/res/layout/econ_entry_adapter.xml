@@ -12,16 +12,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/adapter_dist_title"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/adapter_fuel_title"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/adapter_date_title"/>
 
     </LinearLayout>
@@ -33,18 +36,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/dist_placeholder"
             android:id="@+id/adapter_dist"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/fuel_placeholder"
             android:id="@+id/adapter_fuel"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/listText"
             android:text="@string/date_placeholder"
             android:id="@+id/adapter_date"/>
     </LinearLayout>

@@ -12,7 +12,7 @@
             android:defaultValue="@string/default_dist_unit" />
 
         <ListPreference
-            android:key="pref_fuel_unit"
+            android:key="pref_fuelunit"
             android:title="@string/settings_fuel"
             android:dialogTitle="@string/settings_fuel"
             android:entries="@array/fuel_unit_labels"

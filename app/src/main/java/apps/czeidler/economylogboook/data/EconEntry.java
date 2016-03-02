@@ -14,7 +14,7 @@ public class EconEntry {
     private float distanceCount;
     private float distanceMult;
 
-    EconEntry(long theDate, float fuel, float fueltMult, float dist, float distMult) {
+    public EconEntry(long theDate, float fuel, float fueltMult, float dist, float distMult) {
         entryDate = new Date(theDate);
         this.fuelCount = fuel;
         this.fuelMult = fueltMult;
@@ -42,8 +42,8 @@ public class EconEntry {
 
     private float convertUnit(float expected, float current, float value) {
         float result = value;
-        result = result / current;
-        result = result * expected;
+        result = result * current;
+        result = result / expected;
         return result;
     }
 

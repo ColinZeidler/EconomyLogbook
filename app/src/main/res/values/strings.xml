@@ -15,9 +15,9 @@
     <string name="date_placeholder">Feb 29, 2015</string>
 
     <!-- Settings-->
-    <string name="default_dist_unit">1</string>
+    <string name="default_dist_unit">KILOMETERS</string>
     <string name="settings_dist">Distance</string>
     <string name="settings_fuel">Fuel</string>
-    <string name="default_fuel_unit">1</string>
+    <string name="default_fuel_unit">LITERS</string>
     <string name="settings_units_category">Units</string>
 </resources>

@@ -1,6 +1,8 @@
 package apps.czeidler.economylogboook;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import apps.czeidler.economylogboook.data.DistanceUnits;
 import apps.czeidler.economylogboook.data.EconEntry;
+import apps.czeidler.economylogboook.data.FuelUnits;
 
 /**
  * Created by Colin on 2016-02-29.
@@ -43,8 +47,15 @@ public class EconListAdapter extends ArrayAdapter<EconEntry> {
 
         EconEntry entry = entries.get(position);
         if (entry != null) {
-            dist_text.setText(entry.getDistanceCount(1f) + ""); //TODO change param to setting for conversion
-            fuel_text.setText(entry.getFuelCount(1f) + ""); //TODO change param to setting for conversion
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+
+            String fuelPref = prefs.getString("pref_fuelunit", "LITERS");
+            String distPref = prefs.getString("pref_distunit", "KILOMETERS");
+
+            dist_text.setText(entry.getDistanceCount(DistanceUnits.valueOf(distPref).getRatio())
+                    + DistanceUnits.valueOf(distPref).getUnit());
+            fuel_text.setText(entry.getFuelCount(FuelUnits.valueOf(fuelPref).getRatio())
+                    + FuelUnits.valueOf(fuelPref).getUnit());
             date_text.setText(entry.getDateString());
         }
 

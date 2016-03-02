@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity"
-            android:parentActivityName=".EntryDisplay" />
+            android:parentActivityName=".EntryDisplay"
+            android:label="@string/action_settings"/>
     </application>
 
 </manifest>

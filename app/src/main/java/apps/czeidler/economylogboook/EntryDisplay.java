@@ -34,12 +34,9 @@ public class EntryDisplay extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Added new list item", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                list.add(new EconEntry(Calendar.getInstance().getTimeInMillis(),
-                        10f, FuelUnits.LITERS.getRatio(),
-                        200f, DistanceUnits.KILOMETERS.getRatio()));
-                econListAdapter.notifyDataSetChanged();
+                Intent intent = new Intent();
+                intent.setClass(getBaseContext(), EntryCreate.class);
+                startActivity(intent);
             }
         });
 
@@ -62,7 +59,6 @@ public class EntryDisplay extends AppCompatActivity {
                 list);
         ListView lView = (ListView) findViewById(R.id.entry_list);
         lView.setAdapter(econListAdapter);
-        //TODO register for preferences change update
     }
 
     @Override
@@ -75,7 +71,7 @@ public class EntryDisplay extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        econListAdapter.notifyDataSetChanged();
+        update();
     }
 
     @Override
@@ -94,5 +90,10 @@ public class EntryDisplay extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void update() {
+        econListAdapter.notifyDataSetChanged();
+        //TODO update the totals
     }
 }

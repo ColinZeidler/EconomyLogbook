@@ -18,9 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity"
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".EntryDisplay" />
+        <activity android:name=".EntryCreate"
             android:parentActivityName=".EntryDisplay"
-            android:label="@string/action_settings"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

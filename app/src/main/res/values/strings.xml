@@ -20,4 +20,8 @@
     <string name="settings_fuel">Fuel</string>
     <string name="default_fuel_unit">LITERS</string>
     <string name="settings_units_category">Units</string>
+
+    <!-- New entry-->
+    <string name="fuel_hint">Fuel (%1$s)</string>
+    <string name="dist_hint">Distance (%1$s)</string>
 </resources>

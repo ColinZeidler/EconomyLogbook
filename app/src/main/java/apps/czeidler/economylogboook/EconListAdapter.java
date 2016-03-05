@@ -47,15 +47,11 @@ public class EconListAdapter extends ArrayAdapter<EconEntry> {
 
         EconEntry entry = entries.get(position);
         if (entry != null) {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(v.getContext());
 
-            String fuelPref = prefs.getString("pref_fuelunit", "LITERS");
-            String distPref = prefs.getString("pref_distunit", "KILOMETERS");
-
-            dist_text.setText(entry.getDistanceCount(DistanceUnits.valueOf(distPref).getRatio())
-                    + DistanceUnits.valueOf(distPref).getUnit());
-            fuel_text.setText(entry.getFuelCount(FuelUnits.valueOf(fuelPref).getRatio())
-                    + FuelUnits.valueOf(fuelPref).getUnit());
+            dist_text.setText(entry.getDistanceCount(DistanceUnits.getSystemRatio(v.getContext()))
+                    + DistanceUnits.getSystemUnit(v.getContext()));
+            fuel_text.setText(entry.getFuelCount(FuelUnits.getSystemRatio(v.getContext()))
+                    + FuelUnits.getSystemUnit(v.getContext()));
             date_text.setText(entry.getDateString());
         }
 

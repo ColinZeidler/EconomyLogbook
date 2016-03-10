@@ -22,7 +22,7 @@ public class EconEntry {
         this.distanceMult = distMult;
     }
 
-    long GetDateLong() {
+    long getDateLong() {
         return entryDate.getTime();
     }
 
@@ -45,6 +45,22 @@ public class EconEntry {
         result = result * current;
         result = result / expected;
         return result;
+    }
+
+    protected float getDistance() {
+        return distanceCount;
+    }
+
+    protected float getFuel() {
+        return fuelCount;
+    }
+
+    protected float getFuelMult() {
+        return fuelMult;
+    }
+
+    protected float getDistanceMult() {
+        return distanceMult;
     }
 
 }

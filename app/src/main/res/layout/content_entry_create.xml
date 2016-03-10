@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"/>
+        android:text="@string/entry_create_date_title"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -27,12 +27,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/dist_edit"
         android:inputType="numberDecimal"
-        android:hint="Distance"/>
+        android:hint="@string/distance_hint"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:id="@+id/fuel_edit"
-        android:hint="Fuel"/>
+        android:hint="@string/fuel_hint_2"/>
 
 </LinearLayout>

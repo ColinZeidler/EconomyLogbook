@@ -17,7 +17,9 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import apps.czeidler.economylogboook.data.DataManager;
 import apps.czeidler.economylogboook.data.DistanceUnits;
+import apps.czeidler.economylogboook.data.EconEntry;
 import apps.czeidler.economylogboook.data.FuelUnits;
 
 public class EntryCreate extends AppCompatActivity implements CalendarDatePickerDialogFragment.OnDateSetListener{
@@ -37,7 +39,15 @@ public class EntryCreate extends AppCompatActivity implements CalendarDatePicker
             public void onClick(View view) {
                 Snackbar.make(view, "New Entry created", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                //TODO get data from form and save to DB, then close activity
+                float fuel = Float.valueOf(((EditText)findViewById(R.id.fuel_edit)).getText().toString());
+                float dist = Float.valueOf(((EditText)findViewById(R.id.dist_edit)).getText().toString());
+                Date d = mCal.getTime();
+                EconEntry inputItem = new EconEntry(d.getTime(),
+                        fuel, FuelUnits.getSystemRatio(getBaseContext()),
+                        dist, DistanceUnits.getSystemRatio(getBaseContext()));
+
+                DataManager.getInstance(getBaseContext()).addEntry(inputItem);
+                finish();
             }
         });
 

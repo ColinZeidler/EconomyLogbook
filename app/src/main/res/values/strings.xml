@@ -24,4 +24,7 @@
     <!-- New entry-->
     <string name="fuel_hint">Fuel (%1$s)</string>
     <string name="dist_hint">Distance (%1$s)</string>
+    <string name="entry_create_date_title">Date</string>
+    <string name="distance_hint">Distance</string>
+    <string name="fuel_hint_2">Fuel</string>
 </resources>

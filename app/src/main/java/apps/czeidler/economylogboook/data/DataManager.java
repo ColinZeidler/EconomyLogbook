@@ -84,10 +84,14 @@ public class DataManager extends SQLiteOpenHelper {
     }
 
     private EconEntry buildEntry(Cursor cursor) {
-        return new EconEntry(cursor.getLong(5),
-                cursor.getFloat(3), // fuel
-                cursor.getFloat(4), // fuel mult
-                cursor.getFloat(1), // dist
-                cursor.getFloat(2)); //dist mult
+        return new EconEntry(cursor.getLong(4),
+                cursor.getFloat(2), // fuel
+                cursor.getFloat(3), // fuel mult
+                cursor.getFloat(0), // dist
+                cursor.getFloat(1)); //dist mult
+    }
+
+    public void deleteEntries() {
+        db.delete(E_TABLENAME, null, null);
     }
 }

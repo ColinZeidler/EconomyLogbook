@@ -16,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import apps.czeidler.economylogboook.data.DataManager;
 import apps.czeidler.economylogboook.data.DistanceUnits;
 import apps.czeidler.economylogboook.data.EconEntry;
 import apps.czeidler.economylogboook.data.FuelUnits;
@@ -83,17 +84,24 @@ public class EntryDisplay extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent();
-            intent.setClass(getBaseContext(), SettingsActivity.class);
-            startActivity(intent);
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                Intent intent = new Intent();
+                intent.setClass(getBaseContext(), SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_delete_all:
+                DataManager.getInstance(getBaseContext()).deleteEntries();
+                update();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     private void update() {
+        list.clear();
+        list.addAll(DataManager.getInstance(getBaseContext()).getEntries());
         econListAdapter.notifyDataSetChanged();
         //TODO update the totals
     }

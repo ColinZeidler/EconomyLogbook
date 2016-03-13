@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,20 +45,17 @@ public class EntryDisplay extends AppCompatActivity {
             }
         });
 
-        //TODO init Totals display
-        //TODO init ListView
+        ((TextView)findViewById(R.id.dist_unit)).setText(DistanceUnits.getSystemUnit(getBaseContext()));
+        ((TextView)findViewById(R.id.fuel_unit)).setText(FuelUnits.getSystemUnit(getBaseContext()));
+        ((TextView)findViewById(R.id.econ_unit)).setText(getResources().getString(R.string.econ_total_units,
+                DistanceUnits.getSystemUnit(getBaseContext()),
+                FuelUnits.getSystemUnit(getBaseContext())));
+
+        ((TextView)findViewById(R.id.dist)).setText("0");
+        ((TextView)findViewById(R.id.fuel_data)).setText("0");
+        ((TextView)findViewById(R.id.econ_data)).setText("0");
+
         list = new ArrayList<>();
-        list.add(new EconEntry(Calendar.getInstance().getTimeInMillis(),
-                34.5f, FuelUnits.LITERS.getRatio(),
-                557.8f, DistanceUnits.KILOMETERS.getRatio()));
-
-        list.add(new EconEntry(Calendar.getInstance().getTimeInMillis(),
-                10f, FuelUnits.GALLONS.getRatio(),
-                100f, DistanceUnits.MILES.getRatio()));
-
-        list.add(new EconEntry(Calendar.getInstance().getTimeInMillis(),
-                10f, FuelUnits.LITERS.getRatio(),
-                200f, DistanceUnits.KILOMETERS.getRatio()));
         econListAdapter = new EconListAdapter(getApplicationContext(),
                 R.layout.econ_entry_adapter,
                 list);
@@ -103,6 +103,28 @@ public class EntryDisplay extends AppCompatActivity {
         list.clear();
         list.addAll(DataManager.getInstance(getBaseContext()).getEntries());
         econListAdapter.notifyDataSetChanged();
+
+        ((TextView)findViewById(R.id.dist_unit)).setText(DistanceUnits.getSystemUnit(getBaseContext()));
+        ((TextView)findViewById(R.id.fuel_unit)).setText(FuelUnits.getSystemUnit(getBaseContext()));
+        ((TextView)findViewById(R.id.econ_unit)).setText(getResources().getString(R.string.econ_total_units,
+                DistanceUnits.getSystemUnit(getBaseContext()),
+                FuelUnits.getSystemUnit(getBaseContext())));
+
+        double dTotal = 0;
+        double fTotal = 0;
+        for (EconEntry entry: list) {
+            dTotal += entry.getDistanceCount(DistanceUnits.getSystemRatio(getBaseContext()));
+            fTotal += entry.getFuelCount(FuelUnits.getSystemRatio(getBaseContext()));
+        }
+        double eAvg;
+        if (fTotal > 0)
+            eAvg = dTotal / fTotal;
+        else
+            eAvg = 0;
+
+        ((TextView)findViewById(R.id.dist)).setText(Double.toString(dTotal));
+        ((TextView)findViewById(R.id.fuel_data)).setText(Double.toString(fTotal));
+        ((TextView)findViewById(R.id.econ_data)).setText(Double.toString(eAvg));
         //TODO update the totals
     }
 }

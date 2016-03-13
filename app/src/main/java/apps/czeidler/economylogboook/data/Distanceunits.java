@@ -11,9 +11,9 @@ public enum DistanceUnits {
     KILOMETERS (1f, "km"),
     MILES (1.6f, "mi");
 
-    private final float ratio;
+    private final double ratio;
     private final String unit;
-    DistanceUnits(float ratio, String unit) {
+    DistanceUnits(double ratio, String unit) {
         this.ratio = ratio;
         this.unit = unit;
     }
@@ -22,7 +22,7 @@ public enum DistanceUnits {
         return unit;
     }
 
-    public float getRatio() {
+    public double getRatio() {
         return ratio;
     }
 
@@ -32,7 +32,7 @@ public enum DistanceUnits {
         return valueOf(distPref).getUnit();
     }
 
-    public static float getSystemRatio(Context c) {
+    public static double getSystemRatio(Context c) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
         String distPref = prefs.getString("pref_distunit", "KILOMETERS");
         return valueOf(distPref).getRatio();

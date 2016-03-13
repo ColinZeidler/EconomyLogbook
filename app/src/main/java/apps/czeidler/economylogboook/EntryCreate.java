@@ -39,8 +39,8 @@ public class EntryCreate extends AppCompatActivity implements CalendarDatePicker
             public void onClick(View view) {
                 Snackbar.make(view, "New Entry created", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                float fuel = Float.valueOf(((EditText)findViewById(R.id.fuel_edit)).getText().toString());
-                float dist = Float.valueOf(((EditText)findViewById(R.id.dist_edit)).getText().toString());
+                double fuel = Double.valueOf(((EditText)findViewById(R.id.fuel_edit)).getText().toString());
+                double dist = Double.valueOf(((EditText)findViewById(R.id.dist_edit)).getText().toString());
                 Date d = mCal.getTime();
                 EconEntry inputItem = new EconEntry(d.getTime(),
                         fuel, FuelUnits.getSystemRatio(getBaseContext()),

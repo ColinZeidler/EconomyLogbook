@@ -51,9 +51,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/fuel_data"
             android:text="345"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_alignBaseline="@id/fuel_title"
+            android:layout_alignEnd="@id/dist"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/econ_total_title"
+            android:layout_below="@id/fuel_title"
+            android:id="@+id/econ_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/econ_unit"
+            android:text="KM/L"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@id/econ_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/econ_data"
+            android:text="10"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_alignBaseline="@id/econ_title"
             android:layout_alignEnd="@id/dist"/>
     </RelativeLayout>
 

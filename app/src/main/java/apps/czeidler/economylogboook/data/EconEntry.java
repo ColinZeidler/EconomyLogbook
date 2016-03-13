@@ -9,12 +9,12 @@ import java.text.DateFormat;
  */
 public class EconEntry {
     private Date entryDate;
-    private float fuelCount;
-    private float fuelMult;
-    private float distanceCount;
-    private float distanceMult;
+    private double fuelCount;
+    private double fuelMult;
+    private double distanceCount;
+    private double distanceMult;
 
-    public EconEntry(long theDate, float fuel, float fueltMult, float dist, float distMult) {
+    public EconEntry(long theDate, double fuel, double fueltMult, double dist, double distMult) {
         entryDate = new Date(theDate);
         this.fuelCount = fuel;
         this.fuelMult = fueltMult;
@@ -31,35 +31,35 @@ public class EconEntry {
         return format.format(entryDate);
     }
 
-    public float getFuelCount(float expectedUnitMult) {
+    public double getFuelCount(double expectedUnitMult) {
         return convertUnit(expectedUnitMult, this.fuelMult, this.fuelCount);
     }
 
 
-    public float getDistanceCount(float expectedUnitMult) {
+    public double getDistanceCount(double expectedUnitMult) {
         return convertUnit(expectedUnitMult, this.distanceMult, this.distanceCount);
     }
 
-    private float convertUnit(float expected, float current, float value) {
-        float result = value;
+    private double convertUnit(double expected, double current, double value) {
+        double result = value;
         result = result * current;
         result = result / expected;
         return result;
     }
 
-    protected float getDistance() {
+    protected double getDistance() {
         return distanceCount;
     }
 
-    protected float getFuel() {
+    protected double getFuel() {
         return fuelCount;
     }
 
-    protected float getFuelMult() {
+    protected double getFuelMult() {
         return fuelMult;
     }
 
-    protected float getDistanceMult() {
+    protected double getDistanceMult() {
         return distanceMult;
     }
 

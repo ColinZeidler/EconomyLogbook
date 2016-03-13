@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Economy Logboook</string>
     <string name="action_settings">Settings</string>
+    <string name="action_delete_all">Delete Everything</string>
 
     <!-- display activity-->
     <string name="dist_total_title">Total Distance:</string>
     <string name="fuel_total_title">Total Fuel Used:</string>
+    <string name="econ_total_title">Average Economy:</string>
+    <string name="econ_total_units">%1$s/%2$s</string>
 
     <!-- Array adapter-->
     <string name="adapter_dist_title">Distance:</string>
@@ -27,5 +30,4 @@
     <string name="entry_create_date_title">Date</string>
     <string name="distance_hint">Distance</string>
     <string name="fuel_hint_2">Fuel</string>
-    <string name="action_delete_all">Delete Everything</string>
 </resources>

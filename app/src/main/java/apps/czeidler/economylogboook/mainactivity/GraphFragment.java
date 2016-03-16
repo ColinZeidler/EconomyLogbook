@@ -1,4 +1,4 @@
-package apps.czeidler.economylogboook;
+package apps.czeidler.economylogboook.mainactivity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import apps.czeidler.economylogboook.R;
+
 /**
  * Created by Colin on 2016-03-13.
  * Fragment to display the graphs generated from the entry data
  */
-public class GraphFragment extends Fragment{
+public class GraphFragment extends Fragment {
 
     private Context mContext;
     private View rootView;
@@ -24,8 +26,8 @@ public class GraphFragment extends Fragment{
 
         mContext = container.getContext();
         rootView = inflater.inflate(R.layout.fragment_graphs, container, false);
-        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
-        fab.hide();
+//        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+//        fab.hide();
 
         return rootView;
     }

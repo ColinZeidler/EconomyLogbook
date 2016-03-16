@@ -30,4 +30,6 @@
     <string name="entry_create_date_title">Date</string>
     <string name="distance_hint">Distance</string>
     <string name="fuel_hint_2">Fuel</string>
+    <string name="title_section0">Economy List</string>
+    <string name="title_section1">Economy Graphs</string>
 </resources>

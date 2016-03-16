@@ -6,11 +6,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private EntryListFragment entryListFragment;
     private GraphFragment graphFragment;
 
-
-    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         pages = mViewPager != null;
 
         if (pages) {
+            Log.d("Main", "using tabs");
             //act like a view pager
             mPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
             mViewPager.setAdapter(mPagerAdapter);
@@ -53,17 +51,23 @@ public class MainActivity extends AppCompatActivity {
             mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         } else {
             //both views visible
+            Log.d("Main", "using multiple fragments");
             if (graphFragment == null)
                 graphFragment = new GraphFragment();
             if (entryListFragment == null)
                 entryListFragment = new EntryListFragment();
-             getSupportFragmentManager().beginTransaction().add(R.id.fragment_econ_list,
-                     entryListFragment, "entryList").commit();
-             getSupportFragmentManager().beginTransaction().add(R.id.fragment_econ_list,
-                     graphFragment, "graphs").commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_econ_list,
+                    entryListFragment, "entryList").commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_graphs,
+                    graphFragment, "graphs").commit();
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        update();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,5 +131,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
+    }
+
+    private void update() {
+
     }
 }

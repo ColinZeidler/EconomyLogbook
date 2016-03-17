@@ -43,17 +43,20 @@ public class GraphFragment extends Fragment {
 
         mContext = container.getContext();
         rootView = inflater.inflate(R.layout.fragment_graphs, container, false);
-//        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
-//        fab.hide();
+
+        update();
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        update();
+    }
+
+    public void update() {
 
         ArrayList<EconEntry> model = DataManager.getInstance(mContext).getEntries();
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis(), 10, 1, 200, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-60480000, 15, 1, 300, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-(60480000 * 2), 11, 1, 274, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-(60480000 * 3), 11.3, 1, 234, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-(60480000 * 4), 26, 1, 543, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-(60480000 * 5), 42, 1, 598, 1));
-        model.add(new EconEntry(Calendar.getInstance().getTimeInMillis()-(60480000 * 6), 30, 1, 510, 1));
         //setup LineCharts
         LineChart distChart = (LineChart) rootView.findViewById(R.id.distance_chart);
         LineChart fuelChart = (LineChart) rootView.findViewById(R.id.fuel_chart);
@@ -107,6 +110,5 @@ public class GraphFragment extends Fragment {
         econChart.setDescription("");
         econChart.invalidate();
 
-        return rootView;
     }
 }

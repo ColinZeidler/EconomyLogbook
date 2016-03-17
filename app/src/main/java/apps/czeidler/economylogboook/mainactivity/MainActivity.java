@@ -2,6 +2,7 @@ package apps.czeidler.economylogboook.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import apps.czeidler.economylogboook.EntryCreate;
 import apps.czeidler.economylogboook.R;
 import apps.czeidler.economylogboook.SettingsActivity;
 import apps.czeidler.economylogboook.data.DataManager;
@@ -39,28 +42,38 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.main_pager);
         pages = mViewPager != null;
+        if (savedInstanceState == null) {
+            if (pages) {
+                Log.d("Main", "using tabs");
+                //act like a view pager
+                mPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+                mViewPager.setAdapter(mPagerAdapter);
 
-        if (pages) {
-            Log.d("Main", "using tabs");
-            //act like a view pager
-            mPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-            mViewPager.setAdapter(mPagerAdapter);
-
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-            tabLayout.setupWithViewPager(mViewPager);
-            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        } else {
-            //both views visible
-            Log.d("Main", "using multiple fragments");
-            if (graphFragment == null)
-                graphFragment = new GraphFragment();
-            if (entryListFragment == null)
-                entryListFragment = new EntryListFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_econ_list,
-                    entryListFragment, "entryList").commit();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_graphs,
-                    graphFragment, "graphs").commit();
+                TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+                tabLayout.setupWithViewPager(mViewPager);
+                mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            } else {
+                //both views visible
+                Log.d("Main", "using multiple fragments");
+                if (graphFragment == null)
+                    graphFragment = new GraphFragment();
+                if (entryListFragment == null)
+                    entryListFragment = new EntryListFragment();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_econ_list,
+                        entryListFragment, "entryList").add(R.id.fragment_graphs,
+                        graphFragment, "graphs").commit();
+            }
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(getBaseContext(), EntryCreate.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -89,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_delete_all:
                 DataManager.getInstance(getBaseContext()).deleteEntries();
                 entryListFragment.update();
+                graphFragment.update();
                 return true;
         }
 

@@ -68,7 +68,7 @@ public class EntryListFragment extends Fragment {
         ListView lView = (ListView) rootView.findViewById(R.id.entry_list);
         lView.setAdapter(econListAdapter);
         update();
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return rootView;
     }
 
     @Override
@@ -104,9 +104,9 @@ public class EntryListFragment extends Fragment {
         else
             eAvg = 0;
 
-        ((TextView)rootView.findViewById(R.id.dist)).setText(Double.toString(dTotal));
-        ((TextView)rootView.findViewById(R.id.fuel_data)).setText(Double.toString(fTotal));
-        ((TextView)rootView.findViewById(R.id.econ_data)).setText(Double.toString(eAvg));
+        ((TextView)rootView.findViewById(R.id.dist)).setText(String.format("%.2f", dTotal));
+        ((TextView)rootView.findViewById(R.id.fuel_data)).setText(String.format("%.2f", fTotal));
+        ((TextView)rootView.findViewById(R.id.econ_data)).setText(String.format("%.2f", eAvg));
     }
     
 }

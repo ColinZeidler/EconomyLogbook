@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="apps.czeidler.economylogboook.mainactivity.MainActivity"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:id="@+id/content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -30,7 +31,7 @@
             android:text="12000"
             android:id="@+id/dist"
             android:layout_toStartOf="@id/dist_unit"
-            android:paddingRight="@dimen/activity_horizontal_margin"/>
+            android:paddingRight="@dimen/activity_vertical_margin"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/fuel_data"
             android:text="345"
-            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_alignBaseline="@id/fuel_title"
             android:layout_alignEnd="@id/dist"/>
 
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/econ_data"
             android:text="10"
-            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_alignBaseline="@id/econ_title"
             android:layout_alignEnd="@id/dist"/>
     </RelativeLayout>
@@ -80,6 +81,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:id="@+id/entry_list">
 
     </ListView>

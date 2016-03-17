@@ -40,6 +40,12 @@ public class EconEntry {
         return convertUnit(expectedUnitMult, this.distanceMult, this.distanceCount);
     }
 
+    public double getEconomy(double distunit, double fuelUnit) {
+        double d = convertUnit(distunit, this.distanceMult, this.distanceCount);
+        double f = convertUnit(fuelUnit, this.fuelMult, this.fuelCount);
+        return d/f;
+    }
+
     private double convertUnit(double expected, double current, double value) {
         double result = value;
         result = result * current;

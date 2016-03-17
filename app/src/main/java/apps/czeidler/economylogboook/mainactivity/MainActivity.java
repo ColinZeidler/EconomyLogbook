@@ -42,17 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.main_pager);
         pages = mViewPager != null;
-        if (savedInstanceState == null) {
-            if (pages) {
-                Log.d("Main", "using tabs");
-                //act like a view pager
-                mPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-                mViewPager.setAdapter(mPagerAdapter);
+        if (pages) {
+            Log.d("Main", "using tabs");
+            //act like a view pager
+            mPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+            mViewPager.setAdapter(mPagerAdapter);
 
-                TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-                tabLayout.setupWithViewPager(mViewPager);
-                mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-            } else {
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+            tabLayout.setupWithViewPager(mViewPager);
+            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        } else {
+
+            if (savedInstanceState == null) {
                 //both views visible
                 Log.d("Main", "using multiple fragments");
                 if (graphFragment == null)

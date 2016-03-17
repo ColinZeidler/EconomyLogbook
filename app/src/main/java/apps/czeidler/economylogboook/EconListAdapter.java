@@ -48,10 +48,10 @@ public class EconListAdapter extends ArrayAdapter<EconEntry> {
         EconEntry entry = entries.get(position);
         if (entry != null) {
 
-            dist_text.setText(entry.getDistanceCount(DistanceUnits.getSystemRatio(v.getContext()))
-                    + DistanceUnits.getSystemUnit(v.getContext()));
-            fuel_text.setText(entry.getFuelCount(FuelUnits.getSystemRatio(v.getContext()))
-                    + FuelUnits.getSystemUnit(v.getContext()));
+            dist_text.setText(String.format("%.2f %s", entry.getDistanceCount(DistanceUnits.getSystemRatio(v.getContext())),
+                    DistanceUnits.getSystemUnit(v.getContext())));
+            fuel_text.setText(String.format("%.2f %s", entry.getFuelCount(FuelUnits.getSystemRatio(v.getContext())),
+                    FuelUnits.getSystemUnit(v.getContext())));
             date_text.setText(entry.getDateString());
         }
 
